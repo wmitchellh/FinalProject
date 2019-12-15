@@ -33,8 +33,13 @@ h3 {
   margin-right: 30px;
 }
 
+h4 {
+  margin-left: 5%;
+  color: red;
+}
+
 footer {
-  background-color: #272727;
+  background-color: grey;
 }
 
 .fotorama {
@@ -44,5 +49,9 @@ footer {
 }
 
 #donut {
-  margin-top: 105px;
+    margin-bottom: 40px;
+}
+
+#math {
+
 }

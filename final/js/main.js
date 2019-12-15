@@ -1,3 +1,14 @@
+var data;
+var picture = [];
+var person = [];
+var gender = [];
+var company = [];
+var email = [];
+var about = [];
+var favoriteSport = [];
+
+var maleCount = 0;
+var femaleCount = 0;
 
 $(document).ready(function(){
   $('#table').dataTable( {
@@ -25,10 +36,6 @@ $(document).ready(function(){
 loadData();
 });
 
-$( document ).ready(function() {
-    loadData();
-});
-
 
 function loadData(){
 
@@ -39,19 +46,13 @@ function loadData(){
             success: parseData
 });
 
-
 }
-
-var maleCount = 0;
-var femaleCount = 0;
 
 function parseData(data){
     console.log(data);
-    //dataObj = JSON.parse(data);
-    //console.log(dataObj);
 
      for (var i = 0, len = data.length; i < len; ++i) {
-            //sets data to arrays for charts
+            //making individual arrays
             picture.push(data[i]["picture"]);
             person.push(data[i]["name"]);
             gender.push(data[i]["gender"]);
@@ -60,16 +61,18 @@ function parseData(data){
             about.push(data[i]["about"]);
             favoriteSport.push(data[i]["favoriteSport"]);
 
-//attempt to incriment male and female count
+//attempt to incriment male and female count (math/variable statement)
             if (data[i]["gender"] == "male") {
                 maleCount++;
             }else{
                 femaleCount++;
             }
      }
+
+console.log(data[i]["gender"]);
 }
 
-
+//donut chart for favorite sport
 var chart = c3.generate({
     bindto: '#donut',
     data: {
@@ -94,4 +97,6 @@ var chart = c3.generate({
     }
 });
 
-document.getElementById("math").innerHTML = "There are " + maleCount + " males and " + femaleCount + " females."
+//adding math statemet to html
+html = '<h4>There are ' + maleCount + ' males and ' + femaleCount +  ' females.</h4>'
+$( "#math" ).html(html);
